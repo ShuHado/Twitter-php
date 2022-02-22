@@ -79,9 +79,6 @@ function getDataUser()
 
       $query = 'SELECT name, tag, date_inscription, ville, description, nb_abonnements, nb_abonnes, photo_profile, photo_back_profile FROM users';
 
-      // $query = $query . 'ORDER BY votes DESC';
-      // $query .= 'ORDER BY votes DESC';
-
       $reponse = $db->prepare($query);
 
       $reponse->execute();

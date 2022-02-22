@@ -5,7 +5,8 @@ require_once("db.php");
 /**
  * Connecte l'utilisateur
  */
-function login($mail) {
+function login($mail)
+{
 
       global $db;
 
@@ -17,14 +18,14 @@ function login($mail) {
 
       $user = $q->fetch();
 
-    // si ce n'est pas le bon mot de passe, on retourne faux
+      // si ce n'est pas le bon mot de passe, on retourne faux
       if (!password_verify($_POST["password"], $user["password"])) {
             echo "mauvais mot de passe ou mail";
             return false;
       }
 
-    // sinon, on retourne le $user
-    // cela permettra de le stocker dans la $_SESSION
+      // sinon, on retourne le $user
+      // cela permettra de le stocker dans la $_SESSION
       return $user;
 }
 
@@ -62,7 +63,8 @@ function check_member_exists($email)
       return $q->rowCount() > 0;
 }
 
-function getPostsUser($id) {
+function getPostsUser($id)
+{
       global $db;
 
       $q = $db->prepare("SELECT message, date, nb_comment, nb_like, name, tag, photo_profile FROM posts, users WHERE posts.user_id = $id AND users.id = $id");
@@ -72,7 +74,8 @@ function getPostsUser($id) {
       return $q;
 }
 
-function getPosts() {
+function getPosts()
+{
       global $db;
 
       $q = $db->prepare("SELECT message, date, nb_comment, nb_like, name, tag, photo_profile FROM posts JOIN users ON posts.user_id = users.id");
@@ -80,20 +83,4 @@ function getPosts() {
       $q->execute();
 
       return $q;
-}
-
-
-function getDataUser()
-{
-      global $db;
-
-      $query = 'SELECT name, tag, date_inscription, ville, description, nb_abonnements, nb_abonnes, photo_profile, photo_back_profile FROM users';
-
-      $reponse = $db->prepare($query);
-
-      $reponse->execute();
-
-      $user = $reponse->fetch();
-
-      return $user;
 }

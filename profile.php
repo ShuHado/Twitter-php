@@ -18,7 +18,6 @@ if (empty($_SESSION["user"])) {
 // c'est plus pratique car plus court
 $user = $_SESSION["user"];
 
-$user_data = getDataUser();
 $postUser = getPostsUser($user['id']);
 
 ?>

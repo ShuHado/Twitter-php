@@ -1,0 +1,287 @@
+body {
+	font-family: "Open Sans", sans-serif;
+}
+
+.twitter-login {
+	width: 100%;
+	height: 100vh;
+	object-fit: cover;
+}
+
+.twitter-logo {
+	width: 10%;
+}
+
+.row {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+}
+
+.container {
+	display: flex;
+}
+
+.left-side,
+.right-side {
+	width: 50%;
+}
+
+.right-side {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+form {
+	padding: 50px 50px 0 50px;
+	font-size: 20px;
+	max-width: 500px;
+	width: 100%;
+	p {
+		font-size: 40px;
+		font-weight: 800;
+	}
+}
+.btn_login {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 50px;
+	width: 100%;
+	button {
+		border-radius: 50px;
+		width: 200px;
+		padding: 15px 0;
+		background-color: #17a2f2;
+		color: white;
+		border: #17a2f2;
+	}
+}
+
+label,
+input {
+	display: block;
+}
+
+#email {
+	margin-bottom: 60px;
+}
+
+input {
+	border: 1px solid grey;
+	border-radius: 15px;
+	padding: 10px 0;
+	width: 100%;
+}
+
+label {
+	padding-bottom: 10px;
+}
+
+button {
+	margin-top: 50px;
+	margin-left: 150px;
+	border-radius: 50px;
+	width: 200px;
+	padding: 15px 0;
+	background-color: #17a2f2;
+	color: white;
+	border: #17a2f2;
+}
+
+.center {
+	display: flex;
+	flex-direction: column;
+	max-width: 50%;
+	margin: 0 auto;
+	form {
+		display: flex;
+		border: 1px solid grey;
+		padding: 0;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		max-width: unset;
+		width: unset;
+		textarea {
+			flex-grow: 1;
+			height: 100%;
+			border: none;
+			margin-top: 1.2rem;
+			margin-bottom: 1.2rem;
+			resize: none;
+		}
+		button {
+			width: 150px;
+			height: 50px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		img {
+			border-radius: 100%;
+			width: 90px;
+			height: 90px;
+			object-fit: cover;
+			margin: 1.2rem;
+		}
+	}
+	div:first-child {
+		max-height: 15rem;
+	}
+}
+
+header {
+	display: flex;
+	h3 {
+		margin: 0;
+		padding-right: 0.3rem;
+	}
+	span {
+		color: #7f7f7f;
+	}
+	.user {
+		color: #7f7f7f;
+		padding-left: 0.6rem;
+		margin: 0;
+		font-weight: normal;
+	}
+	.user-verif {
+		fill: #17a2f2;
+		width: 1.2rem;
+	}
+	.dot {
+		color: #7f7f7f;
+		font-weight: normal;
+		padding: 0 0.2rem;
+	}
+	.date {
+		color: #7f7f7f;
+		font-weight: normal;
+		padding: 0 0.2rem;
+	}
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+	margin: 1.5rem 1.2rem 0 1.2rem;
+	.user {
+		color: #7f7f7f;
+		margin: 0;
+		font-weight: normal;
+	}
+	button {
+		margin: auto 0;
+		h3 {
+			margin: 0;
+		}
+	}
+}
+
+.tweet {
+	display: flex;
+	border: 0.5px solid #7f7f7f;
+}
+
+.image-profil {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	margin-left: 1.2rem;
+}
+
+.profil {
+	position: relative;
+	width: 120px;
+	height: 120px;
+	border: 5px solid white;
+	top: -5rem;
+	left: 2.7rem;
+	margin-left: 0;
+}
+
+footer {
+	color: #6e767d;
+	display: flex;
+	span {
+		display: flex;
+		padding-right: 5rem;
+		margin-bottom: 1.2rem;
+		.icon {
+			width: 1.2rem;
+			fill: #6e767d;
+		}
+	}
+}
+
+.tweet-right {
+	margin-left: 1.2rem;
+}
+
+.tweet-right,
+.profile {
+	margin-top: 1.2rem;
+}
+
+.banniere-profil {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+.description {
+	margin-top: 3rem;
+}
+
+.center#profil {
+	border: 0.5px solid #7f7f7f;
+}
+
+.center {
+	.description {
+		margin-left: 1.2rem;
+	}
+}
+
+.about {
+	display: flex;
+	width: 100%;
+	color: #7f7f7f;
+	.ville,
+	.inscription {
+		display: flex;
+		align-items: center;
+		width: 30%;
+		svg {
+			width: 10%;
+			fill: #7f7f7f;
+			padding-right: 0.2rem;
+		}
+	}
+
+	.ville {
+		margin-left: 0.5rem;
+		margin-right: -5rem;
+		svg {
+			padding: 0;
+		}
+	}
+}
+
+.follower-followee {
+	display: flex;
+	margin-top: 1.2%;
+	padding-left: 0.5rem;
+	border: 0.5px solid #7f7f7f;
+	.follower,
+	.followee {
+		display: flex;
+		align-items: center;
+		margin: 0 0.5rem;
+		p {
+			color: #7f7f7f;
+			font-size: large;
+		}
+	}
+}

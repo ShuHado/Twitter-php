@@ -67,7 +67,7 @@ function getPostsUser($id)
 {
       global $db;
 
-      $q = $db->prepare("SELECT message, date, nb_comment, nb_like, name, tag, photo_profile FROM posts, users WHERE posts.user_id = $id AND users.id = $id");
+      $q = $db->prepare("SELECT message, hour, nb_comment, nb_like, name, tag, photo_profile FROM posts, users WHERE posts.user_id = $id AND users.id = $id ORDER BY hour DESC");
 
       $q->execute();
 
@@ -78,9 +78,52 @@ function getPosts()
 {
       global $db;
 
-      $q = $db->prepare("SELECT message, date, nb_comment, nb_like, name, tag, photo_profile FROM posts JOIN users ON posts.user_id = users.id");
+      $q = $db->prepare("SELECT posts.id, message, hour, nb_comment, nb_like, user_id, name, tag, photo_profile FROM posts JOIN users ON posts.user_id = users.id ORDER BY hour DESC");
 
       $q->execute();
 
       return $q;
+}
+
+function getPost($post_id)
+{
+      global $db;
+
+      $q = $db->prepare("SELECT message, hour, nb_comment, nb_like, name, tag, photo_profile FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id = :post_id ORDER BY hour DESC");
+
+      $q->bindParam(":post_id", $post_id);
+
+      $q->execute();
+
+
+      $donnees = $q->fetch();
+
+      return $donnees;
+}
+
+function getCommentPost($post_id)
+{
+      global $db;
+
+      $q = $db->prepare("SELECT message, hour, nb_comment, nb_like, name, tag, photo_profile FROM posts,users WHERE posts.user_id = users.id AND post_id = :post_id ORDER BY hour DESC");
+
+      $q->bindParam(":post_id", $post_id);
+
+      $q->execute();
+
+      return $q;
+}
+
+function getUser($id)
+{
+
+      global $db;
+
+      $q = $db->prepare("SELECT name, tag, description, photo_profile, photo_back_profile, ville, date_inscription, nb_abonnements, nb_abonnes FROM users WHERE id = $id;");
+
+      $q->execute();
+
+      $donnees = $q->fetch();
+
+      return $donnees;
 }

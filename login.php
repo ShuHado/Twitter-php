@@ -18,7 +18,7 @@ if (!empty($_POST)) {
 
                   if ($user) {
                         $_SESSION["user"] = $user;
-                        header("Location: profile.php");
+                        header("Location: index.php");
                   } else {
                         array_push($errors, "Mauvais email / mot de passe.");
                   }

@@ -4,6 +4,14 @@ require("functions.php");
 // on démarre la session
 // sinon, on n'aurait pas accès à $_SESSION
 session_start();
+// on copie la session dans $user
+// c'est plus pratique car plus court
+$user = $_SESSION['user'];
+
+if (!empty($_GET['user_id'])) {
+
+      $user_id = $_GET['user_id'];
+}
 
 // si pas de session utilisateur, c'est qu'il n'est pas connecté
 if (empty($_SESSION["user"])) {
@@ -14,11 +22,8 @@ if (empty($_SESSION["user"])) {
       die();
 }
 
-// on copie la session dans $user
-// c'est plus pratique car plus court
-$user = $_SESSION["user"];
-
-$postUser = getPostsUser($user['id']);
+$postUser = getPostsUser($user_id);
+$dataUser = getUser($user_id);
 
 ?>
 
@@ -40,20 +45,20 @@ $postUser = getPostsUser($user['id']);
 
       <div class="center" id="profil">
             <div>
-                  <img class="banniere-profil" src="<?php echo $user['photo_back_profile'] ?>" alt="Bannière profil">
-                  <img class="image-profil profil" src="<?php echo $user['photo_profile'] ?>" alt="photo de profil">
+                  <img class="banniere-profil" src="<?php echo $dataUser['photo_back_profile'] ?>" alt="Bannière profil">
+                  <img class="image-profil profil" src="<?php echo $dataUser['photo_profile'] ?>" alt="photo de profil">
             </div>
 
             <div class="info">
                   <div>
-                        <h3 class="profile_name"><?php echo $user['name']; ?></h3>
-                        <h3 class="user"><?php echo $user['tag']; ?></h3>
+                        <h3 class="profile_name"><?php echo $dataUser['name']; ?></h3>
+                        <h3 class="user"><?php echo $dataUser['tag']; ?></h3>
                   </div>
                   <button>
                         <h3>Suivre</h3>
                   </button>
             </div>
-            <h3 class="description"><?php echo $user['description']; ?></h3>
+            <h3 class="description"><?php echo $dataUser['description']; ?></h3>
             <div class="about">
                   <div class="ville">
                         <svg viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr">
@@ -62,7 +67,7 @@ $postUser = getPostsUser($user['id']);
                                     <path d="M20.692 10.69C20.692 5.9 16.792 2 12 2s-8.692 3.9-8.692 8.69c0 1.902.603 3.708 1.743 5.223l.003-.002.007.015c1.628 2.07 6.278 5.757 6.475 5.912.138.11.302.163.465.163.163 0 .327-.053.465-.162.197-.155 4.847-3.84 6.475-5.912l.007-.014.002.002c1.14-1.516 1.742-3.32 1.742-5.223zM12 20.29c-1.224-.99-4.52-3.715-5.756-5.285-.94-1.25-1.436-2.742-1.436-4.312C4.808 6.727 8.035 3.5 12 3.5s7.192 3.226 7.192 7.19c0 1.57-.497 3.062-1.436 4.313-1.236 1.57-4.532 4.294-5.756 5.285z"></path>
                               </g>
                         </svg>
-                        <p><?php echo $user['ville']; ?></p>
+                        <p><?php echo $dataUser['ville']; ?></p>
                   </div>
                   <div class="inscription">
                         <svg viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-1d4mawv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr">
@@ -78,16 +83,16 @@ $postUser = getPostsUser($user['id']);
                                     <circle cx="12" cy="17.486" r="1.285"></circle>
                               </g>
                         </svg>
-                        <p>A rejoint Twitter le <?php echo $user['date_inscription']; ?></p>
+                        <p>A rejoint Twitter le <?php echo $dataUser['date_inscription']; ?></p>
                   </div>
             </div>
             <div class="follower-followee">
                   <div class="follower">
-                        <h3><?php echo $user['nb_abonnements']; ?></h3>
+                        <h3><?php echo $dataUser['nb_abonnements']; ?></h3>
                         <p class="follower">abonnements</p>
                   </div>
                   <div class="followee">
-                        <h3><?php echo $user['nb_abonnes']; ?></h3>
+                        <h3><?php echo $dataUser['nb_abonnes']; ?></h3>
                         <p class="followee">abonnés</p>
                   </div>
             </div>
@@ -109,7 +114,7 @@ $postUser = getPostsUser($user['id']);
                                     </svg>
                                     <h3 class="user"><?php echo $donnees['tag']; ?></h3>
                                     <h3 class="dot">·</h3>
-                                    <h3 class="date"><?php echo $donnees['date']; ?></h3>
+                                    <h3 class="date"><?php echo $donnees['hour']; ?></h3>
                               </header>
                               <p>
                                     <?php echo $donnees['message']; ?>

@@ -347,4 +347,8 @@ p.message {
 span p {
 	margin-bottom: 0;
 }
+
+.tweet {
+	cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
